@@ -1,0 +1,179 @@
+.audioPlayer{
+	position:relative;
+	outline: none;
+	color:black;
+	background-color:grey;
+	border-radius:20px;
+	width:300px;
+	height:30px;
+	margin: 0;
+	display:inline-block;
+	box-shadow: inset 0px -14px 29px -2px rgba(0,0,0,0.49);
+	text-align:left !important;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+}
+.audioPlayer > .comment {
+	display:none;
+	color:white;
+    position:absolute;
+    border:solid 1px #888;
+	border-radius:20px; 
+	bottom:30px;
+    padding:8px;
+    background-color:black;
+    width:160px;
+    text-align:left;
+}
+/*****PLAY*****/
+.audioPlayer > .play{
+	outline: none;
+	content: url(../images/play.png);
+	padding:5px;
+	height:20px;
+	width:20px;
+	border-radius:20px 0 0 20px;
+	cursor:pointer;
+	display:inline-block;
+}
+/*****PAUSE*****/
+.audioPlayer > .pause{
+	outline: none;
+	content: url(../images/pause.png);
+	padding:5px;
+	height:20px;
+	width:20px;
+	border-radius:20px 0 0 20px;
+	cursor:pointer;
+	display:inline-block;
+}
+/*****TACKER
+		START*****/
+.audioPlayer > .tracker{
+	position:relative;
+	display:inline-block !important;
+	margin-top:-8px;
+	width:150px;
+	height:30px;
+	color:#ccc;
+	vertical-align:middle;
+}
+.tracker > .duration{
+	display:inline-block;
+}
+.tracker > .progressBar{ 
+	position:relative;
+	width:30%;
+	padding-right:30px;
+	height:10px;
+	background:url(../images/progress_bg.png) no-repeat;
+	display:inline-block !important;
+	background-size: 100% 7px;
+	vertical-align:middle;
+	
+}
+.progressBar > .progress{
+	position:absolute;
+	background: black;
+	box-shadow: inset 1px 0px 6px #666;
+	padding-bottom:2px;
+	height:5px;
+	display:inline-block !important;
+	background-size: 100% 6px;
+}
+.progressBar > #audio-progress-handle{
+  display:inline-block !important;
+  position:absolute;
+  z-index: 2;
+  margin-top: -6px;
+  margin-left: 0px;
+  width: 10px;
+  height: 10px;
+  border: 4px solid #D3D5DF;
+  border-radius: 100%;
+  background-color: #000;
+  box-shadow: 1px 0px 6px rgba(0, 0, 0, 1);
+  cursor:pointer;
+}
+/*****TRACKER
+		END*****/
+/*
+*/
+/*****VOLUME ICON*****/
+.audioPlayer > .vol{
+	margin-left:6px;
+	outline: none;
+	content:;
+	height:20px;
+	padding:5px;
+	width:20px;
+	cursor:pointer;
+	display:inline-block;
+	border-radius:100%;
+}
+.audioPlayer > .vol:hover{
+	box-shadow: inset 1px 0px 6px #444;
+}
+.audioPlayer > .vol:active{
+	background-color:#666;
+	box-shadow: inset 1px 0px 6px #222;
+}
+.audioPlayer > .vol_zero{
+	content:url(../images/vol_zero.png);
+}
+.audioPlayer > .vol_low{
+	content:url(../images/vol_low.png);
+}
+.audioPlayer > .vol_medium{
+	content:url(../images/vol_medium.png);
+}
+.audioPlayer > .vol_high{
+	content:url(../images/vol_high.png);
+}
+/*****VOLME BAR 
+		START*****/
+.volumeDiv{
+	display:inline-block;
+	width:50px;
+	position:relative;
+}
+.volumeBar{
+	background-color:black;
+	height:7px;
+	position:absolute;
+	display:inline-block;
+	top:2px;
+	overflow:hidden;
+	border-radius:5px;
+	box-shadow: inset 1px 0px 6px #666;
+}
+input.volume {
+	width:50px;
+	vertical-align:middle;
+	border-radius:5px;
+    -webkit-appearance: none !important;
+    background:#fff;
+    height:7px;
+	margin-bottom:25px;
+	display:inline-block;	
+}
+input.volume::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background:url(../images/knob.png) no-repeat;
+    height:14px;
+    width:14px;
+	display:inline-block;
+	box-shadow: inset 1px 0px 6px rgba(0, 0, 0, 1);
+	border-radius:12px;
+	margin-left:0px;
+	z-index:2;
+	background-size: 100% 100%;
+	position:relative;
+}
+/*****VOULUME BAR
+		END*****/
