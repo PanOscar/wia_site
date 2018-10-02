@@ -1,5 +1,4 @@
 <?php
-
  $dbhost = 'localhost';
  $dbuser = 'root';
  $dbpass = '';
@@ -15,9 +14,9 @@ if ($conn->connect_error) {
     exit;
 }
 
-
  function CloseCon($conn){
  $conn -> close();
  }
  
+
  ?>

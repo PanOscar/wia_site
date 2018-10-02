@@ -2,8 +2,8 @@
 session_start();
 
 include 'connect.php';
-		$id = $_GET['id'];
-		$output= "";
+		$id = @$_GET['id'];
+	
 			$sql="SELECT * FROM options WHERE option_id = 1";
 				$result = $conn->query($sql);
 				$row = $result->fetch_assoc();

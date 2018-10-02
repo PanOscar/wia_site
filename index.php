@@ -55,20 +55,7 @@ include 'connect.php';
 			$sql="SELECT * FROM options WHERE option_id = 1";
 				$result = $conn->query($sql);
 				$row = $result->fetch_assoc();
-				if(isset($_GET['zapisz'])){
-					if($_GET['users_can_register']!=$row['option_value']){
-						if($row['option_value']==1){
-							
-								$sql1= "UPDATE options SET option_value = '0' WHERE option_id = 1";
-								$conn->query($sql1);
-								header("Refresh:0");
-						}else{
-								$sql1="UPDATE options SET option_value = '1' WHERE option_id = 1";
-								$conn->query($sql1);
-								header("Refresh:0");
-						}	
-					}
-				}
+				
 				?>
 				<div id='mask'></div>
 				<div id='control_panel'>
@@ -231,7 +218,7 @@ include 'connect.php';
 		$(document).ready(function(){  
 				
 			$(document).on('click', '#admin', function(e){
-				  e.preventDefault
+				  e.preventDefault();
 				  $('#control_panel').hide();
 				$('#control_panel').fadeIn(500);
 				$('#control_panel').animate({height:'80%',width:'40%'},500);
@@ -247,10 +234,16 @@ include 'connect.php';
 				$('#control_panel').fadeOut('slow');
 				$('#control_panel').hide(400);
 				$('#mask').fadeOut(500);
+				let users_can_register = 0;
+				if($('#users_can_register').is(':checked')){
+					users_can_register = 1;
+				}else {
+					users_can_register = 0;
+				}
 						$.ajax({
 							type: "GET",
 							url: "ajax.php",
-							data:{zapisz:"true"},
+							data:{zapisz:"true",users_can_register:users_can_register},
 							success:function(){
 								
 							}
