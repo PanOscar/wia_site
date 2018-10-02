@@ -28,6 +28,7 @@ include 'connect.php';
 		<link rel="Stylesheet" type="text/css" href="css/reset.css" >
 		<link rel="Stylesheet" type="text/css" href="css/audio.css" >
 		<link rel="Stylesheet" type="text/css" href="css/first.css" >
+	
 		
 	 <!--Skrypty-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -46,6 +47,42 @@ include 'connect.php';
 	</head>
 	
 	<body>
+		<?php
+			if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+			
+			if($_SESSION['typ'] == 'admin'){
+			$id = @$_GET['id'];
+			$sql="SELECT * FROM options WHERE option_id = 1";
+				$result = $conn->query($sql);
+				$row = $result->fetch_assoc();
+				if(isset($_GET['zapisz'])){
+					if($_GET['users_can_register']!=$row['option_value']){
+						if($row['option_value']==1){
+							
+								$sql1= "UPDATE options SET option_value = '0' WHERE option_id = 1";
+								$conn->query($sql1);
+								header("Refresh:0");
+						}else{
+								$sql1="UPDATE options SET option_value = '1' WHERE option_id = 1";
+								$conn->query($sql1);
+								header("Refresh:0");
+						}	
+					}
+				}
+				?>
+				<div id='mask'></div>
+				<div id='control_panel'>
+					<div style='text-align:center;font-size:40px; background:black'>Ustawienia forum</div>
+					<form class='ustawienia' method='GET' action=''>
+						<input type="hidden" id="users_can_register2" name="users_can_register" value="0"><label><input type="checkbox" id="users_can_register" name="users_can_register" value="1"<?php echo ($row['option_value']==1 && $row['option_name']=='users_can_register' ? 'checked' : '');?>> Użytkownicy mogą się rejestrować</label>
+						<br>
+					</form>
+					
+				</div>
+				<?php
+			}
+		}
+		?>
 		<header>
 		</header>
 		<main>
@@ -54,9 +91,11 @@ include 'connect.php';
 					<a href="http://www.facebook.com">Click</a>
 				</div>
 			</div>-->
-					
+					<?php	
+		
 
-					<?php
+		
+					
 						$sql = "SELECT * FROM categories WHERE idC ORDER BY sortC ASC";
 						$result = $conn->query($sql);
 						
@@ -170,7 +209,7 @@ include 'connect.php';
 			if($_SESSION['typ'] == 'admin'){
 ?>
 		
-		<p class="login"><a href="admin.php">Admin</a></p>
+		<p class="login" id="admin">Admin</p>
 <?php	
 			}
 ?>
@@ -188,6 +227,39 @@ include 'connect.php';
 ?>
 				
 		</footer>
+		<script>
+		$(document).ready(function(){  
+				
+			$(document).on('click', '#admin', function(e){
+				  e.preventDefault
+				  $('#control_panel').hide();
+				$('#control_panel').fadeIn(500);
+				$('#control_panel').animate({height:'80%',width:'40%'},500);
+				
+				$('#mask').fadeIn(500);
+                  
+				 
+				 
+			 });
+			
+			 $(document).on('click', '#mask', function(){
+				$('#control_panel').animate({height:'0',width:'0'},500);
+				$('#control_panel').fadeOut('slow');
+				$('#control_panel').hide(400);
+				$('#mask').fadeOut(500);
+						$.ajax({
+							type: "GET",
+							url: "ajax.php",
+							data:{zapisz:"true"},
+							success:function(){
+								
+							}
+						});
+				 
+				 
+			 });
+		});
+		</script>
 		<script src="js/main.js"></script>
 		
 	</body>
