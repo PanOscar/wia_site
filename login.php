@@ -17,7 +17,6 @@ $pass = $_GET['pass'];
 //SQL INJECTION PROTECTION
 	$stmt = $conn->prepare('SELECT * FROM members WHERE login = ?');
 	$stmt->bind_param('s', $login);
-
 	$stmt->execute();
 $result = $stmt->get_result();
 
