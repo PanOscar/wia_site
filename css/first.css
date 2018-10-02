@@ -1,3 +1,79 @@
+#mask {
+    position:fixed;
+	opacity: 0.6;
+    z-index:10;
+    background-color:#000;
+    display:none;
+	width:100%;
+	height:100%;
+}  
+#admin{
+	cursor: pointer;
+}
+#control_panel {
+    position:fixed;
+    z-index:10;
+    background-color:#fff;
+    display:none;
+	width:0;
+	height:0;
+	left:50%;
+	top:50%;
+	transform: translate(-50%, -50%);
+	overflow:hidden;
+	border-radius: 20px; 
+}  
+.ustawienia{
+	color:black
+}
+#control_panel > .sec-right{
+	width:90%;
+	height:100%;
+	float:right;
+	
+}
+#control_panel > .sec-left{
+	position:relative;
+	background:#a63a5d;
+	width:10%;
+	height:100%;
+	float:left;
+}
+.menu{
+	padding:10% 10% 10% 10%;
+	margin-bottom:5px;
+	width:80%;
+	cursor:pointer;
+	text-shadow:0px 1px 0px #ffffff;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	background:linear-gradient(to bottom, #a63a5c 5%, #d611af 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a63a5c', endColorstr='#d611af',GradientType=0);
+	background-color:#a63a5c;
+}
+.menu:hover{
+	background:linear-gradient(to bottom, #d611af 5%, #a63a5c 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d611af', endColorstr='#a63a5c',GradientType=0);
+	background-color:#d611af;
+}
+.menu:active {
+	position:relative;
+	top:1px;
+}
+.options{
+	content:url(../images/tools.png);
+}
+.posts{
+	content:url(../images/post.png);
+}
+/* 
+******************TO U GÓRY TO JEST NOWE
+*/
+
+
+
+
 body{
 	background:#330011;
 	color:white;
@@ -41,7 +117,7 @@ Sekcja 'Filmy'
 	grid-gap: 10px;
 	
 }
-.filmy > .sec-left, .sec-right{
+.filmy > .sec-left, .filmy > .sec-right{
 	text-align:center;
 	justify-self:center;
 	padding-top:20px;
@@ -108,7 +184,8 @@ Sekcja 'Audio'
 FOOTER
 ========================================================================== */
 footer {
-
+	position:relative;
+	z-index:20;
 	background: black;
 	width:100%;
 	border-radius: 10px 10px 0 0;
