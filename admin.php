@@ -40,7 +40,7 @@ include 'connect.php';
 		<div class="sec-right">
 			<?php
 			$id = @$_GET['id'];
-			$sql="SELECT * FROM options WHERE option_id = 1";
+			$sql="SELECT * FROM options WHERE option_id ";
 				$result = $conn->query($sql);
 				$row = $result->fetch_assoc();
 				if(isset($_GET['zapisz'])){

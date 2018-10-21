@@ -1,7 +1,7 @@
 <?php
 session_start();
-
-include 'connect.php';
+echo session_id();
+require 'connect.php';
 
 ?>
 <!DOCTYPE html>
@@ -51,7 +51,7 @@ include 'connect.php';
 			if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 			
 			if($_SESSION['typ'] == 'admin'){
-			$id = @$_GET['id'];
+			
 			$sql="SELECT * FROM options WHERE option_id = 1";
 				$result = $conn->query($sql);
 				$row = $result->fetch_assoc();
